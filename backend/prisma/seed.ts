@@ -94,6 +94,9 @@ motivated, ready to apply my skills in professional environments.`,
       { name: 'Git', name_en: 'Git', category: 'DevOps & Strumenti', category_en: 'DevOps & Tools', description: 'Controllo versione, branching, collaborazione su GitHub', description_en: 'Version control, branching, collaboration on GitHub', order: 20, profileId: profile.id },
       { name: 'Docker', name_en: 'Docker', category: 'DevOps & Strumenti', category_en: 'DevOps & Tools', description: 'Containerizzazione di applicazioni con Docker Compose', description_en: 'Application containerization with Docker Compose', order: 21, profileId: profile.id },
       { name: 'TCP/IP e Protocolli di Rete', name_en: 'TCP/IP and Network Protocols', category: 'Reti', category_en: 'Networking', description: 'Conoscenza approfondita del modello ISO/OSI e suite TCP/IP', description_en: 'In-depth knowledge of the ISO/OSI model and TCP/IP suite', order: 22, profileId: profile.id },
+      { name: 'JavaFX', name_en: 'JavaFX', category: 'Sviluppo Frontend', category_en: 'Frontend Development', description: 'Framework per lo sviluppo di applicazioni desktop ricche e cross-platform', description_en: 'Framework for rich cross-platform desktop application development', order: 23, profileId: profile.id },
+      { name: 'Maven', name_en: 'Maven', category: 'DevOps & Strumenti', category_en: 'DevOps & Tools', description: 'Automazione del build e gestione delle dipendenze nei progetti Java', description_en: 'Build automation and dependency management for Java projects', order: 24, profileId: profile.id },
+      { name: 'JDBC', name_en: 'JDBC', category: 'Database', category_en: 'Database', description: 'API Java per la connessione e l\'interrogazione di database relazionali', description_en: 'Java API for connecting and querying relational databases', order: 25, profileId: profile.id },
     ],
   });
 
