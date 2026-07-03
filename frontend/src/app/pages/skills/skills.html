@@ -1,0 +1,30 @@
+<section class="page">
+  <h1 class="page__title">{{ tr.t('skills.title') }}</h1>
+  <p class="page__subtitle">{{ tr.t('skills.subtitle') }}</p>
+
+  @if (loading()) {
+    <div class="loading">Caricamento...</div>
+  } @else if (error()) {
+    <div class="error">Errore nel caricamento dei dati.</div>
+  } @else {
+  <div class="skills">
+    @for (category of categories(); track category) {
+      <div class="skills__group">
+        <h2 class="skills__category">{{ category }}</h2>
+        <div class="skills__list">
+          @for (skill of skillGroups()[category]; track skill.id) {
+            <div class="skill">
+              <div class="skill__header">
+                <span class="skill__name">{{ skill.name }}</span>
+              </div>
+              @if (skill.description) {
+                <p class="skill__desc">{{ skill.description }}</p>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+  }
+</section>

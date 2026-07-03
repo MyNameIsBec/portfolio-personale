@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id          Int      @id @default(autoincrement())
+  name        String
+  role        String
+  role_en     String?
+  location    String
+  location_en String?
+  email       String
+  phone       String?
+  avatarUrl   String?
+  summary     String
+  summary_en  String?
+  githubUrl   String?
+  linkedinUrl String?
+  websiteUrl  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  experiences Experience[]
+  educations  Education[]
+  skills      Skill[]
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  company     String
+  role        String
+  description String?
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean  @default(false)
+  order       Int      @default(0)
+  profileId   Int
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+}
+
+model Education {
+  id          Int      @id @default(autoincrement())
+  institution String
+  institution_en String?
+  degree      String
+  degree_en   String?
+  field       String?
+  field_en    String?
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean  @default(false)
+  grade       String?
+  order       Int      @default(0)
+  profileId   Int
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+}
+
+model Skill {
+  id        Int      @id @default(autoincrement())
+  name      String
+  name_en   String?
+  category  String
+  category_en String?
+  description String?
+  description_en String?
+  level     Int      @default(0)
+  order     Int      @default(0)
+  profileId Int
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  title_en    String?
+  description String?
+  description_en String?
+  techStack   String[]
+  githubUrl   String?
+  liveUrl     String?
+  imageUrl    String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model SocialLink {
+  id    Int    @id @default(autoincrement())
+  label String
+  url   String
+  icon  String?
+  order Int    @default(0)
+}

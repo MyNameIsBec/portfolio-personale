@@ -1,0 +1,47 @@
+<section class="page">
+  <h1 class="page__title">{{ tr.t('contact.title') }}</h1>
+
+  @if (loading()) {
+    <div class="loading">Caricamento...</div>
+  } @else if (error()) {
+    <div class="error">Errore nel caricamento dei dati.</div>
+  } @else {
+  <div class="contact">
+    <div class="contact__card">
+      <h2 class="contact__heading">{{ tr.t('contact.info') }}</h2>
+
+      <div class="contact__item">
+        <span class="contact__label">{{ tr.t('contact.email') }}</span>
+        <a class="contact__value" href="mailto:{{ profile()?.email ?? 'becengine@gmail.com' }}">
+          {{ profile()?.email ?? 'becengine@gmail.com' }}
+        </a>
+      </div>
+
+      @if (profile()?.phone) {
+        <div class="contact__item">
+          <span class="contact__label">{{ tr.t('contact.phone') }}</span>
+          <span class="contact__value">{{ profile()?.phone }}</span>
+        </div>
+      }
+
+      <div class="contact__item">
+        <span class="contact__label">{{ tr.t('contact.location') }}</span>
+        <span class="contact__value">{{ profile()?.location ?? 'Palermo, Italia' }}</span>
+      </div>
+
+      <div class="contact__links">
+        @if (profile()?.githubUrl) {
+          <a class="btn btn--secondary" href="{{ profile()?.githubUrl }}" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        }
+        @if (profile()?.linkedinUrl) {
+          <a class="btn btn--secondary" href="{{ profile()?.linkedinUrl }}" target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+  }
+</section>

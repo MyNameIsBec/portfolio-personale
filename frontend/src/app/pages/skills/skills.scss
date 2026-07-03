@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3xl;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__category {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $accent;
+    margin: 0 0 $spacing-lg;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $accent;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+}
+
+.skill {
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-lg;
+  transition: border-color $transition;
+
+  &:hover {
+    border-color: $accent;
+  }
+
+  &__header {
+    margin-bottom: $spacing-xs;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: $text-primary;
+  }
+
+  &__desc {
+    font-size: 0.875rem;
+    color: $text-secondary;
+    line-height: 1.5;
+    margin: 0;
+  }
+}

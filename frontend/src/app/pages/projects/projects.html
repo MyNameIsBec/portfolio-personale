@@ -1,0 +1,44 @@
+<section class="page">
+  <h1 class="page__title">{{ tr.t('projects.title') }}</h1>
+  <p class="page__subtitle">{{ tr.t('projects.subtitle') }}</p>
+
+  @if (loading()) {
+    <div class="loading">Caricamento...</div>
+  } @else if (error()) {
+    <div class="error">Errore nel caricamento dei dati.</div>
+  } @else {
+  <div class="projects__grid">
+    @for (project of projects(); track project.id) {
+      <div class="project-card" [class.project-card--featured]="project.featured">
+        <div class="project-card__header">
+          <h2 class="project-card__title">{{ project.title }}</h2>
+          @if (project.featured) {
+            <span class="project-card__badge">{{ tr.t('projects.featured') }}</span>
+          }
+        </div>
+
+        <p class="project-card__desc">{{ project.description ?? '' }}</p>
+
+        <div class="project-card__tags">
+          @for (tech of project.techStack; track tech) {
+            <span class="tag">{{ tech }}</span>
+          }
+        </div>
+
+        <div class="project-card__links">
+          @if (project.githubUrl) {
+            <a class="btn btn--small" href="{{ project.githubUrl }}" target="_blank" rel="noopener">
+              {{ tr.t('projects.github') }}
+            </a>
+          }
+          @if (project.liveUrl) {
+            <a class="btn btn--small btn--primary" href="{{ project.liveUrl }}" target="_blank" rel="noopener">
+              {{ tr.t('projects.liveDemo') }}
+            </a>
+          }
+        </div>
+      </div>
+    }
+  </div>
+  }
+</section>

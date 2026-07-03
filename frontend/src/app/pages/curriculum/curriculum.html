@@ -1,0 +1,50 @@
+<section class="page">
+  <h1 class="page__title">{{ tr.t('curriculum.title') }}</h1>
+
+  @if (loading()) {
+    <div class="loading">Caricamento...</div>
+  } @else if (error()) {
+    <div class="error">Errore nel caricamento dei dati.</div>
+  } @else {
+  <div class="curriculum">
+    @if (profile()?.experiences?.length) {
+    <div class="curriculum__section">
+      <h2 class="curriculum__heading">{{ tr.t('curriculum.experiences') }}</h2>
+      @for (exp of profile()?.experiences ?? []; track exp.id) {
+        <div class="curriculum__card">
+          <div class="curriculum__period">
+            {{ formatDate(exp.startDate) }} — {{ formatDate(exp.endDate) }}
+          </div>
+          <h3 class="curriculum__role">{{ exp.role }}</h3>
+          <p class="curriculum__company">{{ exp.company }}</p>
+          @if (exp.description) {
+            <p class="curriculum__desc">{{ exp.description }}</p>
+          }
+        </div>
+      }
+    </div>
+  }
+
+    @if (profile()?.educations?.length) {
+    <div class="curriculum__section">
+      <h2 class="curriculum__heading">{{ tr.t('curriculum.education') }}</h2>
+      @for (edu of profile()?.educations ?? []; track edu.id) {
+        <div class="curriculum__card">
+          <div class="curriculum__period">
+            {{ formatDate(edu.startDate) }} — {{ formatDate(edu.endDate) }}
+          </div>
+          <h3 class="curriculum__role">{{ edu.degree }}</h3>
+          <p class="curriculum__company">{{ edu.institution }}</p>
+          @if (edu.field) {
+            <p class="curriculum__desc">{{ edu.field }}</p>
+          }
+          @if (edu.grade) {
+            <p class="curriculum__grade">{{ edu.grade }}</p>
+          }
+        </div>
+      }
+    </div>
+    }
+  </div>
+  }
+</section>

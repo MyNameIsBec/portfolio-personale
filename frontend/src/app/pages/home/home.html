@@ -1,0 +1,27 @@
+<section class="hero">
+  @if (loading()) {
+    <div class="loading">Caricamento...</div>
+  } @else if (error()) {
+    <div class="error">Errore nel caricamento dei dati.</div>
+  } @else {
+  <div class="hero__content">
+    <h2 class="hero__name">{{ profile()?.name ?? 'Antonello Salvo Torregrossa' }}</h2>
+    <p class="hero__role">{{ profile()?.role ?? 'Studente di Ingegneria Informatica' }}</p>
+    <p class="hero__summary">
+      {{ profile()?.summary ?? 'Studente di Ingegneria Informatica con passione per cybersecurity, AI e sviluppo software.' }}
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" routerLink="/curriculum">{{ tr.t('home.viewCurriculum') }}</a>
+      <a class="btn btn--secondary" routerLink="/progetti">{{ tr.t('home.myProjects') }}</a>
+    </div>
+    <div class="hero__links">
+      @if (profile()?.githubUrl) {
+        <a class="hero__social" href="{{ profile()?.githubUrl }}" target="_blank" rel="noopener">GitHub</a>
+      }
+      @if (profile()?.linkedinUrl) {
+        <a class="hero__social" href="{{ profile()?.linkedinUrl }}" target="_blank" rel="noopener">LinkedIn</a>
+      }
+    </div>
+  </div>
+  }
+</section>

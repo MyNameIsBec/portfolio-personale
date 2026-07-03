@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="header__container">
+    <a class="header__logo" routerLink="/">Portfolio</a>
+    <nav class="header__nav">
+      @for (item of navItems; track item.path) {
+        <a
+          class="header__link"
+          [routerLink]="item.path"
+          routerLinkActive="header__link--active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+        >
+          {{ tr.t(item.key) }}
+        </a>
+      }
+    </nav>
+    <button class="lang-btn" (click)="tr.toggle()">{{ tr.language() === 'it' ? 'IT' : 'EN' }}</button>
+  </div>
+</header>
