@@ -3,7 +3,7 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: portfolio
-      POSTGRES_PASSWORD: portfolio123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-portfolio123}
       POSTGRES_DB: portfolio_db
     ports:
       - "5432:5432"
@@ -21,7 +21,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: "postgresql://portfolio:portfolio123@db:5432/portfolio_db?schema=public"
+      DATABASE_URL: "postgresql://portfolio:${POSTGRES_PASSWORD:-portfolio123}@db:5432/portfolio_db?schema=public"
       PORT: 3000
       FRONTEND_URL: "http://localhost:4200"
     depends_on:
