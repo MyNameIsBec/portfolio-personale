@@ -9,12 +9,9 @@
   } @else {
   <div class="projects__grid">
     @for (project of projects(); track project.id) {
-      <div class="project-card" [class.project-card--featured]="project.featured">
+      <div class="project-card">
         <div class="project-card__header">
           <h2 class="project-card__title">{{ project.title }}</h2>
-          @if (project.featured) {
-            <span class="project-card__badge">{{ tr.t('projects.featured') }}</span>
-          }
         </div>
 
         <p class="project-card__desc">{{ project.description ?? '' }}</p>
