@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://tuo-backend.railway.app/api',
+  apiUrl: 'https://portfolio-backend-bssd.onrender.com/api',
 };
